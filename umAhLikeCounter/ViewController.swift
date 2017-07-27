@@ -7,9 +7,17 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
+  
+  var speakers: [NSManagedObject] = []
+  
+  @IBOutlet weak var nameTextField: UITextField!
+  @IBOutlet weak var saveBtn: UIButton!
 
+  @IBOutlet var countLabels: [UILabel]!
+  
   @IBOutlet weak var umLabel: UILabel!
   @IBOutlet weak var umIncreaseBtn: UIButton!
   @IBOutlet weak var umDecreaseBtn: UIButton!
@@ -169,8 +177,12 @@ class ViewController: UIViewController {
     }
   }
   
-  
-  
-  
+  @IBAction func saveBtnTapped(_ sender: UIButton) {
+    print("\(countLabels)")
+    print("name text field:  \(nameTextField)")
+  }
+
 }
+
+
 
