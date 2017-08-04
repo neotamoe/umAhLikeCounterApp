@@ -14,6 +14,7 @@
 		87A148411F281CAA0086608B /* umAhLikeCounter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 87A1483F1F281CAA0086608B /* umAhLikeCounter.xcdatamodeld */; };
 		87A148431F281CAA0086608B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87A148421F281CAA0086608B /* Assets.xcassets */; };
 		87A148461F281CAA0086608B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87A148441F281CAA0086608B /* LaunchScreen.storyboard */; };
+		87C5094C1F35167F009D0B38 /* SpeakersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C5094B1F35167F009D0B38 /* SpeakersTableViewController.swift */; };
 		87DA668B1F2D849100FE6E5B /* SpeakerStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA668A1F2D849100FE6E5B /* SpeakerStats.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		87A148421F281CAA0086608B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87A148451F281CAA0086608B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87A148471F281CAA0086608B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87C5094B1F35167F009D0B38 /* SpeakersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersTableViewController.swift; sourceTree = "<group>"; };
 		87DA668A1F2D849100FE6E5B /* SpeakerStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpeakerStats.swift; path = ../SpeakerStats.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				87DA668A1F2D849100FE6E5B /* SpeakerStats.swift */,
+				87C5094B1F35167F009D0B38 /* SpeakersTableViewController.swift */,
 				87A148381F281CAA0086608B /* AppDelegate.swift */,
 				87A1483A1F281CAA0086608B /* ViewController.swift */,
 				87A1483C1F281CAA0086608B /* Main.storyboard */,
@@ -148,6 +151,7 @@
 				87A1483B1F281CAA0086608B /* ViewController.swift in Sources */,
 				8781396A1F2BD4A40093A64A /* StartViewController.swift in Sources */,
 				87DA668B1F2D849100FE6E5B /* SpeakerStats.swift in Sources */,
+				87C5094C1F35167F009D0B38 /* SpeakersTableViewController.swift in Sources */,
 				87A148391F281CAA0086608B /* AppDelegate.swift in Sources */,
 				87A148411F281CAA0086608B /* umAhLikeCounter.xcdatamodeld in Sources */,
 			);
