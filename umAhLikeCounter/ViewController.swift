@@ -27,10 +27,11 @@ class ViewController: UIViewController {
   @IBOutlet weak var youKnowLabel: UILabel!
   @IBOutlet weak var otherLabel: UILabel!
   
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
-
+    
   }
 
   override func didReceiveMemoryWarning() {
@@ -77,13 +78,14 @@ class ViewController: UIViewController {
       return
     }
     speakerStats.add(newSpeaker)
+    performSegue(withIdentifier: "toTable", sender: self)
   }
-
-//  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//    if let SpeakersTableViewController = segue.destination as? SpeakersTableViewController {
-//      SpeakersTableViewController.text = SpeakerStats.speakers
-//    }
-//  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let speakerViewController = segue.destination as? SpeakerViewController {
+      speakerViewController.newSpeaker = nameTextField.text!
+    }
+  }
   
 }
 
