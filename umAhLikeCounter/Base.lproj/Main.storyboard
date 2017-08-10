@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -157,7 +158,7 @@
                                 </state>
                                 <connections>
                                     <action selector="saveBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E5R-Cb-ivE"/>
-                                    <segue destination="vE5-dG-oAU" kind="show" id="bre-Z9-sx7"/>
+                                    <segue destination="yUz-cz-SxF" kind="show" id="5be-yO-Afn"/>
                                 </connections>
                             </button>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xpZ-Gh-BNY">
@@ -244,33 +245,104 @@
             </objects>
             <point key="canvasLocation" x="287" y="137"/>
         </scene>
-        <!--Speakers Table View Controller-->
-        <scene sceneID="mI9-VI-GcZ">
+        <!--View Controller-->
+        <scene sceneID="DUA-Dg-gl2">
             <objects>
-                <tableViewController id="vE5-dG-oAU" customClass="SpeakersTableViewController" customModule="umAhLikeCounter" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hgp-zO-dC6">
+                <viewController id="yUz-cz-SxF" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xMH-LK-FCR"/>
+                        <viewControllerLayoutGuide type="bottom" id="ECj-3V-rBU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0QC-Ci-150">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpp-dN-JF5">
+                                <rect key="frame" x="26" y="30" width="115" height="30"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="115" id="W4w-uN-XYK"/>
+                                    <constraint firstAttribute="height" constant="30" id="lZc-uX-Czv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="ADD SPEAKER">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="DZ3-zX-EJT"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="7MQ-ft-7dc">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7MQ-ft-7dc" id="eXo-no-Jd2">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="vE5-dG-oAU" id="Rfo-UV-HDV"/>
-                            <outlet property="delegate" destination="vE5-dG-oAU" id="C4E-Bi-CJ5"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="grR-kV-Kib" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="fpp-dN-JF5" firstAttribute="leading" secondItem="0QC-Ci-150" secondAttribute="leadingMargin" constant="10" id="0ND-BA-Wng"/>
+                            <constraint firstItem="fpp-dN-JF5" firstAttribute="top" secondItem="xMH-LK-FCR" secondAttribute="bottom" constant="10" id="Q8l-tw-gbc"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2we-Hg-L5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1010" y="137"/>
+            <point key="canvasLocation" x="1086" y="157"/>
+        </scene>
+        <!--Speakers Table View Controller-->
+        <scene sceneID="I4i-CA-2ED">
+            <objects>
+                <viewController id="Kmo-Kj-DbO" userLabel="Speakers Table View Controller" customClass="SpeakersTableViewController" customModule="umAhLikeCounter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyI-dW-64H"/>
+                        <viewControllerLayoutGuide type="bottom" id="5vf-sW-ccg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="g0R-8F-oV4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aim-Uq-IKs">
+                                <rect key="frame" x="0.0" y="66" width="375" height="601"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="TfT-WW-mk1">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TfT-WW-mk1" id="GoH-jQ-okj">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Kmo-Kj-DbO" id="Ph7-Kq-hi7"/>
+                                    <outlet property="delegate" destination="Kmo-Kj-DbO" id="wS0-1v-Zws"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYX-C3-p1p">
+                                <rect key="frame" x="16" y="20" width="115" height="30"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="115" id="bci-ua-PZQ"/>
+                                    <constraint firstAttribute="height" constant="30" id="gio-wI-LPq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="ADD SPEAKER">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YYX-C3-p1p" firstAttribute="top" secondItem="jyI-dW-64H" secondAttribute="bottom" id="4kU-tJ-KAd"/>
+                            <constraint firstItem="aim-Uq-IKs" firstAttribute="centerX" secondItem="g0R-8F-oV4" secondAttribute="centerX" id="QWA-hk-7rt"/>
+                            <constraint firstItem="YYX-C3-p1p" firstAttribute="leading" secondItem="g0R-8F-oV4" secondAttribute="leadingMargin" id="ZSE-mA-2uA"/>
+                            <constraint firstItem="aim-Uq-IKs" firstAttribute="top" secondItem="YYX-C3-p1p" secondAttribute="bottom" constant="16" id="ble-LN-Yp7"/>
+                            <constraint firstItem="5vf-sW-ccg" firstAttribute="top" secondItem="aim-Uq-IKs" secondAttribute="bottom" id="d67-j7-GKk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="view" destination="aim-Uq-IKs" id="wDF-3k-8m5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qAb-Qc-l94" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1086" y="-534"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="9hR-Vb-rK4">
@@ -315,4 +387,7 @@
             <point key="canvasLocation" x="-532" y="137.18140929535232"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="DZ3-zX-EJT"/>
+    </inferredMetricsTieBreakers>
 </document>

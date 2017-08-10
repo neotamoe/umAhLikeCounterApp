@@ -43,6 +43,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		873CF6701F3A5E09008E74EC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				87DA668A1F2D849100FE6E5B /* SpeakerStats.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		873CF6711F3A5FF8008E74EC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				87A1483A1F281CAA0086608B /* ViewController.swift */,
+				87C5094B1F35167F009D0B38 /* SpeakersTableViewController.swift */,
+				878139691F2BD4A40093A64A /* StartViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		87A1482C1F281CAA0086608B = {
 			isa = PBXGroup;
 			children = (
@@ -62,12 +80,10 @@
 		87A148371F281CAA0086608B /* umAhLikeCounter */ = {
 			isa = PBXGroup;
 			children = (
-				87DA668A1F2D849100FE6E5B /* SpeakerStats.swift */,
-				87C5094B1F35167F009D0B38 /* SpeakersTableViewController.swift */,
+				873CF6711F3A5FF8008E74EC /* Controller */,
+				873CF6701F3A5E09008E74EC /* Model */,
 				87A148381F281CAA0086608B /* AppDelegate.swift */,
-				87A1483A1F281CAA0086608B /* ViewController.swift */,
 				87A1483C1F281CAA0086608B /* Main.storyboard */,
-				878139691F2BD4A40093A64A /* StartViewController.swift */,
 				87A148421F281CAA0086608B /* Assets.xcassets */,
 				87A148441F281CAA0086608B /* LaunchScreen.storyboard */,
 				87A148471F281CAA0086608B /* Info.plist */,

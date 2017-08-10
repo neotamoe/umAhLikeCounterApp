@@ -71,14 +71,20 @@ class ViewController: UIViewController {
   }
   
   @IBAction func saveBtnTapped(_ sender: UIButton) {
-    print("\(countLabels)")
-    print("name text field:  \(nameTextField)")
+//    print("\(countLabels)")
+//    print("name text field:  \(nameTextField)")
     guard let newSpeaker = nameTextField.text else {
       return
     }
     speakerStats.add(newSpeaker)
   }
 
+//  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//    if let SpeakersTableViewController = segue.destination as? SpeakersTableViewController {
+//      SpeakersTableViewController.text = SpeakerStats.speakers
+//    }
+//  }
+  
 }
 
 
