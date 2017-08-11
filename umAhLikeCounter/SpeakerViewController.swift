@@ -24,11 +24,15 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
         speakers.append(newSpeaker)
         print("speakers: \(speakers)")
       }
-      
         // Do any additional setup after loading the view.
     }
 
-    
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let viewController = segue.destination as? ViewController {
+      viewController.speakers = speakers
+    }
+  }
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -41,7 +45,7 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
   
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
-    return 1
+    return speakers.count
   }
   
   

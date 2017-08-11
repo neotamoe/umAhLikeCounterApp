@@ -12,6 +12,7 @@ import CoreData
 class ViewController: UIViewController {
   
   let speakerStats = SpeakerStats()
+  var speakers = [String]()
   
   @IBOutlet weak var nameTextField: UITextField!
   @IBOutlet weak var saveBtn: UIButton!
