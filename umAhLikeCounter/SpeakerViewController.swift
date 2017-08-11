@@ -11,23 +11,36 @@ import UIKit
 class SpeakerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
   let speakerStats = SpeakerStats()
-  var newSpeaker = String()
-  var speakers = [String]()
+  var newSpeaker = [String]()
+  var speakers = [Array<String>]()
+  var sectionDates = [String]()
 
+  func checkDate() -> Array<String>{
+    let date = Date()
+    let formatter = DateFormatter()
+    formatter.dateFormat = "MM-dd-yyyy"
+    let stringDate: String = formatter.string(from: date)
+    if (sectionDates.count == 0) {
+      sectionDates.append(stringDate)
+      print("stringDate: \(stringDate)")
+      print("sectionDates.count: \(sectionDates.count)")
+      return sectionDates
+    } else if (sectionDates.count > 0 && sectionDates[sectionDates.count-1] != stringDate) {
+      sectionDates.append(stringDate)
+      return sectionDates
+    }
+    return sectionDates
+  }
   
   override func viewDidLoad() {
-        super.viewDidLoad()
-//      tableView.dataSource = self
-//      tableView.delegate = self
-      print("speakers on viewDidLoad: \(speakers)")
-      if newSpeaker != "" {
-//        speakerStats.add(newSpeaker)
-        speakers.append(newSpeaker)
-        print("speakers after append: \(speakers)")
-  
-      }
-        // Do any additional setup after loading the view.
-    }
+      super.viewDidLoad()
+      print("speakers on viewDidLoad in SVC: \(speakers)")
+//      if newSpeaker[0] != "" {
+//        speakers.append(newSpeaker)
+//        print("speakers after append: \(speakers)")
+//      }
+    checkDate()
+  }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let viewController = segue.destination as? ViewController {
@@ -41,10 +54,17 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
-//   func numberOfSections(in tableView: UITableView) -> Int {
-//    // #warning Incomplete implementation, return the number of sections
-//    return speakers.count
-//  }
+   func numberOfSections(in tableView: UITableView) -> Int {
+    return sectionDates.count
+  }
+
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    let date = Date()
+    let formatter = DateFormatter()
+    formatter.dateFormat = "MM-dd-yyyy"
+    let stringDate: String = formatter.string(from: date)
+    return "Speakers for \(stringDate)"
+  }
   
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
@@ -54,13 +74,8 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
   
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
-    let date = Date()
-    let formatter = DateFormatter()
-    formatter.dateFormat = "dd-MM-yyyy"
-    let stringDate: String = formatter.string(from: date)
-    
-    cell.textLabel?.text = speakers[indexPath.row]
-    cell.detailTextLabel?.text = stringDate
+    cell.textLabel?.text = speakers[indexPath.row][0]
+//    cell.detailTextLabel?.text =
     
     return cell
   }

@@ -12,7 +12,7 @@ import CoreData
 class ViewController: UIViewController {
   
   let speakerStats = SpeakerStats()
-  var speakers = [String]()
+  var speakers = [Array<String>]()
   
   @IBOutlet weak var nameTextField: UITextField!
   @IBOutlet weak var saveBtn: UIButton!
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
-    print("speakers on viewDidLoad: \(speakers)")
+    print("speakers on viewDidLoad in VC: \(speakers)")
     
   }
 
@@ -73,19 +73,39 @@ class ViewController: UIViewController {
     otherLabel.text = "\(Int(sender.value))"
   }
   
+  var newSpeaker = [String]()
+
   @IBAction func saveBtnTapped(_ sender: UIButton) {
-//    print("\(countLabels)")
-//    print("name text field:  \(nameTextField)")
-    guard let newSpeaker = nameTextField.text else {
-      return
-    }
-//    speakerStats.add(newSpeaker)
+//    guard let newSpeaker = nameTextField.text else {
+//      return
+//    }
+
     performSegue(withIdentifier: "toTable", sender: self)
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let speakerViewController = segue.destination as? SpeakerViewController {
-      speakerViewController.newSpeaker = nameTextField.text!
+      let um = umLabel.text
+      let ah = ahLabel.text
+      let but = butLabel.text
+      let so = soLabel.text
+      let and = andLabel.text
+      let like = likeLabel.text
+      let youKnow = youKnowLabel.text
+      let other = otherLabel.text
+      let newSpeakerName = nameTextField.text
+        newSpeaker.append(newSpeakerName!)
+        newSpeaker.append(um!)
+        newSpeaker.append(ah!)
+        newSpeaker.append(but!)
+        newSpeaker.append(so!)
+        newSpeaker.append(like!)
+        newSpeaker.append(and!)
+        newSpeaker.append(youKnow!)
+        newSpeaker.append(other!)
+        print("newSpeaker in VC: \(newSpeaker)")
+        speakers.append(newSpeaker)
+//      speakerViewController.newSpeaker = newSpeaker
       speakerViewController.speakers = speakers
     }
   }
