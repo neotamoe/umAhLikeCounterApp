@@ -13,6 +13,7 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
   let speakerStats = SpeakerStats()
   var newSpeaker = String()
   var speakers = [String]()
+
   
   override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +54,13 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
   
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
+    let date = Date()
+    let formatter = DateFormatter()
+    formatter.dateFormat = "dd-MM-yyyy"
+    let stringDate: String = formatter.string(from: date)
     
     cell.textLabel?.text = speakers[indexPath.row]
+    cell.detailTextLabel?.text = stringDate
     
     return cell
   }
