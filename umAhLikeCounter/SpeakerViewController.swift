@@ -14,21 +14,23 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
   var newSpeaker = String()
   var speakers = [String]()
   
-    override func viewDidLoad() {
+  override func viewDidLoad() {
         super.viewDidLoad()
 //      tableView.dataSource = self
 //      tableView.delegate = self
-      
+      print("speakers on viewDidLoad: \(speakers)")
       if newSpeaker != "" {
 //        speakerStats.add(newSpeaker)
         speakers.append(newSpeaker)
-        print("speakers: \(speakers)")
+        print("speakers after append: \(speakers)")
+  
       }
         // Do any additional setup after loading the view.
     }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let viewController = segue.destination as? ViewController {
+      print("speakers in prepare for segue: \(speakers)")
       viewController.speakers = speakers
     }
   }
@@ -38,10 +40,10 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
-   func numberOfSections(in tableView: UITableView) -> Int {
-    // #warning Incomplete implementation, return the number of sections
-    return speakers.count
-  }
+//   func numberOfSections(in tableView: UITableView) -> Int {
+//    // #warning Incomplete implementation, return the number of sections
+//    return speakers.count
+//  }
   
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows

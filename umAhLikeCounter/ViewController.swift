@@ -32,6 +32,7 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
+    print("speakers on viewDidLoad: \(speakers)")
     
   }
 
@@ -78,13 +79,14 @@ class ViewController: UIViewController {
     guard let newSpeaker = nameTextField.text else {
       return
     }
-    speakerStats.add(newSpeaker)
+//    speakerStats.add(newSpeaker)
     performSegue(withIdentifier: "toTable", sender: self)
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let speakerViewController = segue.destination as? SpeakerViewController {
       speakerViewController.newSpeaker = nameTextField.text!
+      speakerViewController.speakers = speakers
     }
   }
   
