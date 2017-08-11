@@ -74,7 +74,9 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
   
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
-    cell.textLabel?.text = speakers[indexPath.row][0]
+    cell.textLabel?.numberOfLines = 0
+    cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+    cell.textLabel?.text = "Name: \(speakers[indexPath.row][0]), Um: \(speakers[indexPath.row][1]), Ah: \(speakers[indexPath.row][2]), But: \(speakers[indexPath.row][3]), So: \(speakers[indexPath.row][4]), Like: \(speakers[indexPath.row][5]), And: \(speakers[indexPath.row][6]), YouKnow: \(speakers[indexPath.row][7]), Other: \(speakers[indexPath.row][8])"
 //    cell.detailTextLabel?.text =
     
     return cell
