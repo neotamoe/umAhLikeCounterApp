@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		873CF6731F3CFDA6008E74EC /* SpeakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873CF6721F3CFDA6008E74EC /* SpeakerViewController.swift */; };
 		8781396A1F2BD4A40093A64A /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878139691F2BD4A40093A64A /* StartViewController.swift */; };
+		87A0EB121F3E839200F84171 /* CustomSpeakerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A0EB111F3E839200F84171 /* CustomSpeakerTableViewCell.swift */; };
 		87A148391F281CAA0086608B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A148381F281CAA0086608B /* AppDelegate.swift */; };
 		87A1483B1F281CAA0086608B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A1483A1F281CAA0086608B /* ViewController.swift */; };
 		87A1483E1F281CAA0086608B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87A1483C1F281CAA0086608B /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		873CF6721F3CFDA6008E74EC /* SpeakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerViewController.swift; sourceTree = "<group>"; };
 		878139691F2BD4A40093A64A /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		87A0EB111F3E839200F84171 /* CustomSpeakerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSpeakerTableViewCell.swift; sourceTree = "<group>"; };
 		87A148351F281CAA0086608B /* umAhLikeCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = umAhLikeCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87A148381F281CAA0086608B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87A1483A1F281CAA0086608B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				87A1483A1F281CAA0086608B /* ViewController.swift */,
+				87A0EB111F3E839200F84171 /* CustomSpeakerTableViewCell.swift */,
 				873CF6721F3CFDA6008E74EC /* SpeakerViewController.swift */,
 				878139691F2BD4A40093A64A /* StartViewController.swift */,
 			);
@@ -170,6 +173,7 @@
 				87A148391F281CAA0086608B /* AppDelegate.swift in Sources */,
 				873CF6731F3CFDA6008E74EC /* SpeakerViewController.swift in Sources */,
 				87A148411F281CAA0086608B /* umAhLikeCounter.xcdatamodeld in Sources */,
+				87A0EB121F3E839200F84171 /* CustomSpeakerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

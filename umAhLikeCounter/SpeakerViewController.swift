@@ -14,6 +14,7 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
   var newSpeaker = [String]()
   var speakers = [Array<String>]()
   var sectionDates = [String]()
+  let tableView = UITableView()
 
   func checkDate() -> Array<String>{
     let date = Date()
@@ -35,6 +36,7 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
   override func viewDidLoad() {
       super.viewDidLoad()
       print("speakers on viewDidLoad in SVC: \(speakers)")
+      tableView.rowHeight = 150
 //      if newSpeaker[0] != "" {
 //        speakers.append(newSpeaker)
 //        print("speakers after append: \(speakers)")
@@ -70,26 +72,26 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
     // #warning Incomplete implementation, return the number of rows
     return speakers.count
   }
-  
-  
-   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
-    cell.textLabel?.numberOfLines = 0
-    cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-    cell.textLabel?.text = "Name: \(speakers[indexPath.row][0]), Um: \(speakers[indexPath.row][1]), Ah: \(speakers[indexPath.row][2]), But: \(speakers[indexPath.row][3]), So: \(speakers[indexPath.row][4]), Like: \(speakers[indexPath.row][5]), And: \(speakers[indexPath.row][6]), YouKnow: \(speakers[indexPath.row][7]), Other: \(speakers[indexPath.row][8])"
-//    cell.detailTextLabel?.text =
-    
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomSpeakerTableViewCell
+    if(indexPath.row % 2 == 0){
+      cell.backgroundColor = UIColor.red
+    } else {
+      cell.backgroundColor = UIColor.white
+    }
+    cell.nameLabel.text = speakers[indexPath.row][0]
+    cell.umLabel.text = speakers[indexPath.row][1]
+    cell.ahLabel.text = speakers[indexPath.row][2]
+    cell.butLabel.text = speakers[indexPath.row][3]
+    cell.soLabel.text = speakers[indexPath.row][4]
+    cell.likeLabel.text = speakers[indexPath.row][5]
+    cell.andLabel.text = speakers[indexPath.row][6]
+    cell.youKnowLabel.text = speakers[indexPath.row][7]
+    cell.otherLabel.text = speakers[indexPath.row][8]
     return cell
   }
-  
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

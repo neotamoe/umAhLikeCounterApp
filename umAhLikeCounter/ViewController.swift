@@ -94,18 +94,18 @@ class ViewController: UIViewController {
       let youKnow = youKnowLabel.text
       let other = otherLabel.text
       let newSpeakerName = nameTextField.text
-        newSpeaker.append(newSpeakerName!)
-        newSpeaker.append(um!)
-        newSpeaker.append(ah!)
-        newSpeaker.append(but!)
-        newSpeaker.append(so!)
-        newSpeaker.append(like!)
-        newSpeaker.append(and!)
-        newSpeaker.append(youKnow!)
-        newSpeaker.append(other!)
-        print("newSpeaker in VC: \(newSpeaker)")
-        speakers.append(newSpeaker)
-//      speakerViewController.newSpeaker = newSpeaker
+      newSpeaker.append(newSpeakerName!)
+      newSpeaker.append("Um: \(um!)")
+      newSpeaker.append("Ah: \(ah!)")
+      newSpeaker.append("But: \(but!)")
+      newSpeaker.append("So: \(so!)")
+      newSpeaker.append("Like: \(like!)")
+      newSpeaker.append("And: \(and!)")
+      newSpeaker.append("YouKnow: \(youKnow!)")
+      newSpeaker.append("Other: \(other!)")
+      print("newSpeaker in VC: \(newSpeaker)")
+      speakers.append(newSpeaker)
+//     speakerViewController.newSpeaker = newSpeaker
       speakerViewController.speakers = speakers
     }
   }
