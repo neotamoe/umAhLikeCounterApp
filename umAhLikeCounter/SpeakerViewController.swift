@@ -68,6 +68,13 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
     return "Speakers for \(stringDate)"
   }
   
+  func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    let header = view as! UITableViewHeaderFooterView
+    header.textLabel!.textColor = UIColor.purple
+    header.contentView.backgroundColor = UIColor.lightGray
+  }
+
+  
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
     return speakers.count
