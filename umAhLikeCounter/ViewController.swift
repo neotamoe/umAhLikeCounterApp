@@ -12,7 +12,8 @@ import CoreData
 class ViewController: UIViewController {
   
   let speakerStats = SpeakerStats()
-  var speakers = [Array<String>]()
+//  var speakers = [Array<String>]()
+  var speakers: [NSManagedObject] = []
   
   @IBOutlet weak var nameTextField: UITextField!
   @IBOutlet weak var saveBtn: UIButton!
@@ -31,7 +32,6 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
     print("speakers on viewDidLoad in VC: \(speakers)")
     
   }
@@ -76,39 +76,47 @@ class ViewController: UIViewController {
   var newSpeaker = [String]()
 
   @IBAction func saveBtnTapped(_ sender: UIButton) {
-//    guard let newSpeaker = nameTextField.text else {
-//      return
-//    }
-
+    guard let newSpeaker = nameTextField.text else {
+      return
+    }
+    let um = umLabel.text
+    let ah = ahLabel.text
+    let but = butLabel.text
+    let so = soLabel.text
+    let and = andLabel.text
+    let like = likeLabel.text
+    let youKnow = youKnowLabel.text
+    let other = otherLabel.text
+    self.save(name: newSpeaker, um: um!, ah: ah!, but: but!, so: so!, and: and!, like: like!, youKnow: youKnow!, other: other!)
     performSegue(withIdentifier: "toTable", sender: self)
   }
+
+  func save(name: String, um: String, ah: String, but: String, so: String, and: String, like: String, youKnow: String, other: String) -> NSManagedObject {
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let speakerViewController = segue.destination as? SpeakerViewController {
-      let um = umLabel.text
-      let ah = ahLabel.text
-      let but = butLabel.text
-      let so = soLabel.text
-      let and = andLabel.text
-      let like = likeLabel.text
-      let youKnow = youKnowLabel.text
-      let other = otherLabel.text
-      let newSpeakerName = nameTextField.text
-      newSpeaker.append(newSpeakerName!)
-      newSpeaker.append("Um: \(um!)")
-      newSpeaker.append("Ah: \(ah!)")
-      newSpeaker.append("But: \(but!)")
-      newSpeaker.append("So: \(so!)")
-      newSpeaker.append("Like: \(like!)")
-      newSpeaker.append("And: \(and!)")
-      newSpeaker.append("YouKnow: \(youKnow!)")
-      newSpeaker.append("Other: \(other!)")
-      print("newSpeaker in VC: \(newSpeaker)")
-      speakers.append(newSpeaker)
-//     speakerViewController.newSpeaker = newSpeaker
-      speakerViewController.speakers = speakers
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    let managedContext = appDelegate.persistentContainer.viewContext
+    let entity = NSEntityDescription.entity(forEntityName: "Speaker", in: managedContext)!
+    let speaker = NSManagedObject(entity: entity, insertInto: managedContext)
+    speaker.setValue(name, forKeyPath: "name")
+    speaker.setValue(um, forKeyPath: "um")
+    speaker.setValue(ah, forKeyPath: "ah")
+    speaker.setValue(but, forKeyPath: "but")
+    speaker.setValue(so, forKeyPath: "so")
+    speaker.setValue(and, forKeyPath: "and")
+    speaker.setValue(like, forKeyPath: "like")
+    speaker.setValue(youKnow, forKeyPath: "youKnow")
+    speaker.setValue(other, forKeyPath: "other")
+    
+    do {
+      try managedContext.save()
+      speakers.append(speaker)
+    } catch let error as NSError {
+      print("Could not save. \(error), \(error.userInfo)")
     }
+    return speaker
   }
+
   
 }
 

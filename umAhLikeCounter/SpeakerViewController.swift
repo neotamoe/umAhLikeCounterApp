@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class SpeakerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
   let speakerStats = SpeakerStats()
   var newSpeaker = [String]()
-  var speakers = [Array<String>]()
+  var speakers: [NSManagedObject] = []
   var sectionDates = [String]()
   let tableView = UITableView()
 
@@ -37,11 +38,24 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
       super.viewDidLoad()
       print("speakers on viewDidLoad in SVC: \(speakers)")
       tableView.rowHeight = 150
-//      if newSpeaker[0] != "" {
-//        speakers.append(newSpeaker)
-//        print("speakers after append: \(speakers)")
-//      }
-    checkDate()
+      checkDate()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    let managedContext = appDelegate.persistentContainer.viewContext
+    
+    let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Speaker")
+    
+    do {
+      speakers = try managedContext.fetch(fetchRequest)
+    } catch let error as NSError {
+      print("Could not fetch. \(error) \(error.userInfo)")
+    }
+    
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -76,27 +90,27 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
 
   
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    // #warning Incomplete implementation, return the number of rows
     return speakers.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomSpeakerTableViewCell
+    let speaker = speakers[indexPath.row]
     if(indexPath.row % 2 == 0){
       cell.backgroundColor = UIColor.red
     } else {
       cell.backgroundColor = UIColor.white
     }
-    cell.nameLabel.text = speakers[indexPath.row][0]
-    cell.umLabel.text = speakers[indexPath.row][1]
-    cell.ahLabel.text = speakers[indexPath.row][2]
-    cell.butLabel.text = speakers[indexPath.row][3]
-    cell.soLabel.text = speakers[indexPath.row][4]
-    cell.likeLabel.text = speakers[indexPath.row][5]
-    cell.andLabel.text = speakers[indexPath.row][6]
-    cell.youKnowLabel.text = speakers[indexPath.row][7]
-    cell.otherLabel.text = speakers[indexPath.row][8]
+    cell.nameLabel.text = speaker.value(forKeyPath: "name") as? String
+    cell.umLabel.text = speaker.value(forKeyPath: "um") as? String
+    cell.ahLabel.text = speaker.value(forKeyPath: "ah") as? String
+    cell.butLabel.text = speaker.value(forKeyPath: "but") as? String
+    cell.soLabel.text = speaker.value(forKeyPath: "so") as? String
+    cell.likeLabel.text = speaker.value(forKeyPath: "and") as? String
+    cell.andLabel.text = speaker.value(forKeyPath: "like") as? String
+    cell.youKnowLabel.text = speaker.value(forKeyPath: "youKnow") as? String
+    cell.otherLabel.text = speaker.value(forKeyPath: "other") as? String
     return cell
   }
 
