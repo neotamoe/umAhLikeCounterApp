@@ -103,14 +103,14 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
       cell.backgroundColor = UIColor.white
     }
     cell.nameLabel.text = speaker.value(forKeyPath: "name") as? String
-    cell.umLabel.text = speaker.value(forKeyPath: "um") as? String
-    cell.ahLabel.text = speaker.value(forKeyPath: "ah") as? String
-    cell.butLabel.text = speaker.value(forKeyPath: "but") as? String
-    cell.soLabel.text = speaker.value(forKeyPath: "so") as? String
-    cell.likeLabel.text = speaker.value(forKeyPath: "and") as? String
-    cell.andLabel.text = speaker.value(forKeyPath: "like") as? String
-    cell.youKnowLabel.text = speaker.value(forKeyPath: "youKnow") as? String
-    cell.otherLabel.text = speaker.value(forKeyPath: "other") as? String
+    cell.umLabel.text = "Um: \(String(describing: speaker.value(forKeyPath: "um") as! String))"
+    cell.ahLabel.text = "Ah: \(String(describing: speaker.value(forKeyPath: "ah") as! String))"
+    cell.butLabel.text = "But: \(String(describing: speaker.value(forKeyPath: "but") as! String))"
+    cell.soLabel.text = "So: \(String(describing: speaker.value(forKeyPath: "so") as! String))"
+    cell.likeLabel.text = "And: \(String(describing: speaker.value(forKeyPath: "and") as! String))"
+    cell.andLabel.text = "Like: \(String(describing: speaker.value(forKeyPath: "like") as! String))"
+    cell.youKnowLabel.text = "You Know: \(String(describing: speaker.value(forKeyPath: "youKnow") as! String))"
+    cell.otherLabel.text = "Other: \(String(describing: speaker.value(forKeyPath: "other") as! String))"
     return cell
   }
 

@@ -4,6 +4,7 @@
         <attribute name="ah" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="and" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="but" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="like" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="other" optional="YES" attributeType="String" syncable="YES"/>
@@ -12,6 +13,6 @@
         <attribute name="youKnow" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Speaker" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="Speaker" positionX="-63" positionY="-18" width="128" height="195"/>
     </elements>
 </model>

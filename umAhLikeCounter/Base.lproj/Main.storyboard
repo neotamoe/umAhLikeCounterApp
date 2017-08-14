@@ -431,12 +431,24 @@
                                 <rect key="frame" x="117" y="436" width="142" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Click to Start">
+                                <state key="normal" title="Add Speaker">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="clickToStartBtnTapped:" destination="6Yw-rD-vGz" eventType="touchUpInside" id="muc-rI-NQa"/>
                                     <segue destination="BYZ-38-t0r" kind="show" id="3H9-zH-O9b"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6eF-RR-X6s">
+                                <rect key="frame" x="117" y="488" width="142" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="View All Speakers">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickToStartBtnTapped:" destination="6Yw-rD-vGz" eventType="touchUpInside" id="WvJ-Zd-36I"/>
+                                    <segue destination="Kmo-Kj-DbO" kind="show" id="v9D-xm-B5U"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -452,6 +464,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="IAf-BL-P6d"/>
+        <segue reference="3H9-zH-O9b"/>
+        <segue reference="v9D-xm-B5U"/>
     </inferredMetricsTieBreakers>
 </document>
