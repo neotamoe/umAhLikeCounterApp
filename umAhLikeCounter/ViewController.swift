@@ -29,11 +29,20 @@ class ViewController: UIViewController {
   @IBOutlet weak var youKnowLabel: UILabel!
   @IBOutlet weak var otherLabel: UILabel!
   
+//  func getCurrentDate () -> String {
+//    let date = Date()
+//    let formatter = DateFormatter()
+//    formatter.dateFormat = "MM-dd-yyyy"
+//    let stringDate: String = formatter.string(from: date)
+//    return stringDate
+//  }
+  
+  var stringDate = String()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     print("speakers on viewDidLoad in VC: \(speakers)")
-    
+//    getCurrentDate()
   }
 
   override func didReceiveMemoryWarning() {
@@ -107,10 +116,11 @@ class ViewController: UIViewController {
     speaker.setValue(like, forKeyPath: "like")
     speaker.setValue(youKnow, forKeyPath: "youKnow")
     speaker.setValue(other, forKeyPath: "other")
-    
+    speaker.setValue(NSDate(), forKeyPath: "date")
     do {
       try managedContext.save()
       speakers.append(speaker)
+      print("speaker added: \(speaker)")
     } catch let error as NSError {
       print("Could not save. \(error), \(error.userInfo)")
     }

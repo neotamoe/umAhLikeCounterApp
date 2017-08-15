@@ -16,12 +16,17 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
   var speakers: [NSManagedObject] = []
   var sectionDates = [String]()
   let tableView = UITableView()
-
-  func checkDate() -> Array<String>{
+  var stringDate = String()
+  
+  func getCurrentDate () -> String {
     let date = Date()
     let formatter = DateFormatter()
     formatter.dateFormat = "MM-dd-yyyy"
     let stringDate: String = formatter.string(from: date)
+    return stringDate
+  }
+  
+  func checkDate() -> Array<String>{
     if (sectionDates.count == 0) {
       sectionDates.append(stringDate)
       print("stringDate: \(stringDate)")
@@ -75,11 +80,7 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
   }
 
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    let date = Date()
-    let formatter = DateFormatter()
-    formatter.dateFormat = "MM-dd-yyyy"
-    let stringDate: String = formatter.string(from: date)
-    return "Speakers for \(stringDate)"
+    return "Speakers for <insert date here>"
   }
   
   func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
