@@ -27,20 +27,20 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
     return stringDate
   }
   
-//  func checkDate() -> Array<String>{
-//    if (sectionDates.count == 0) {
-//      sectionDates.append(stringDate)
-//      print("stringDate: \(stringDate)")
-//      print("sectionDates.count: \(sectionDates.count)")
-//      return sectionDates
-//    } else if (sectionDates.count > 0 && sectionDates[sectionDates.count-1] != stringDate) {
-//      sectionDates.append(stringDate)
-//      print("stringDate: \(stringDate)")
-//      print("sectionDates.count: \(sectionDates.count)")
-//      return sectionDates
-//    }
-//    return sectionDates
-//  }
+  func checkDate() -> Array<String>{
+    if (sectionDates.count == 0) {
+      sectionDates.append(stringDate)
+      print("stringDate: \(stringDate)")
+      print("sectionDates.count: \(sectionDates.count)")
+      return sectionDates
+    } else if (sectionDates.count > 0 && sectionDates[sectionDates.count-1] != stringDate) {
+      sectionDates.append(stringDate)
+      print("stringDate: \(stringDate)")
+      print("sectionDates.count: \(sectionDates.count)")
+      return sectionDates
+    }
+    return sectionDates
+  }
   
   
   override func viewDidLoad() {
@@ -48,7 +48,7 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
       print("speakers on viewDidLoad in SVC: \(speakers)")
       tableView.rowHeight = 150
       getCurrentDateString()
-//      checkDate()
+      checkDate()
   }
   
   override func viewWillAppear(_ animated: Bool) {
