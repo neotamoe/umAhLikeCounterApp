@@ -29,13 +29,14 @@ class ViewController: UIViewController {
   @IBOutlet weak var youKnowLabel: UILabel!
   @IBOutlet weak var otherLabel: UILabel!
   
-//  func getCurrentDate () -> String {
-//    let date = Date()
-//    let formatter = DateFormatter()
-//    formatter.dateFormat = "MM-dd-yyyy"
-//    let stringDate: String = formatter.string(from: date)
-//    return stringDate
-//  }
+  func getCurrentDate () -> String {
+    let date = Date()
+    let formatter = DateFormatter()
+    formatter.dateFormat = "MM-dd-yyyy"
+    formatter.timeZone = TimeZone.current
+    let stringDate: String = formatter.string(from: date)
+    return stringDate
+  }
   
   var stringDate = String()
   

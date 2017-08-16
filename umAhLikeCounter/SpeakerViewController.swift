@@ -18,32 +18,37 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
   let tableView = UITableView()
   var stringDate = String()
   
-  func getCurrentDate () -> String {
+  func getCurrentDateString() -> String {
     let date = Date()
     let formatter = DateFormatter()
     formatter.dateFormat = "MM-dd-yyyy"
+    formatter.timeZone = TimeZone.current
     let stringDate: String = formatter.string(from: date)
     return stringDate
   }
   
-  func checkDate() -> Array<String>{
-    if (sectionDates.count == 0) {
-      sectionDates.append(stringDate)
-      print("stringDate: \(stringDate)")
-      print("sectionDates.count: \(sectionDates.count)")
-      return sectionDates
-    } else if (sectionDates.count > 0 && sectionDates[sectionDates.count-1] != stringDate) {
-      sectionDates.append(stringDate)
-      return sectionDates
-    }
-    return sectionDates
-  }
+//  func checkDate() -> Array<String>{
+//    if (sectionDates.count == 0) {
+//      sectionDates.append(stringDate)
+//      print("stringDate: \(stringDate)")
+//      print("sectionDates.count: \(sectionDates.count)")
+//      return sectionDates
+//    } else if (sectionDates.count > 0 && sectionDates[sectionDates.count-1] != stringDate) {
+//      sectionDates.append(stringDate)
+//      print("stringDate: \(stringDate)")
+//      print("sectionDates.count: \(sectionDates.count)")
+//      return sectionDates
+//    }
+//    return sectionDates
+//  }
+  
   
   override func viewDidLoad() {
       super.viewDidLoad()
       print("speakers on viewDidLoad in SVC: \(speakers)")
       tableView.rowHeight = 150
-      checkDate()
+      getCurrentDateString()
+//      checkDate()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +62,10 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     do {
       speakers = try managedContext.fetch(fetchRequest)
+      // not sure these next lines are useful or necessary--saving for now as it is sorting by date (I don't know how to manipulate the data in the object
+      let sortDescriptor = NSSortDescriptor(key: "date", ascending: true, selector: #selector(NSDate.compare(_:)))
+      let speakersSortedByDate = (speakers as NSArray).sortedArray(using: [sortDescriptor])
+      print("speakersSortedByDate: \(speakersSortedByDate)")
     } catch let error as NSError {
       print("Could not fetch. \(error) \(error.userInfo)")
     }
@@ -74,7 +83,8 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+  
+  
    func numberOfSections(in tableView: UITableView) -> Int {
     return sectionDates.count
   }
