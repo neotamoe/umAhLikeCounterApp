@@ -59,13 +59,16 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
     let managedContext = appDelegate.persistentContainer.viewContext
     
     let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Speaker")
-    
+    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true, selector: #selector(NSDate.compare(_:)))]
     do {
       speakers = try managedContext.fetch(fetchRequest)
-      // not sure these next lines are useful or necessary--saving for now as it is sorting by date (I don't know how to manipulate the data in the object
-      let sortDescriptor = NSSortDescriptor(key: "date", ascending: true, selector: #selector(NSDate.compare(_:)))
-      let speakersSortedByDate = (speakers as NSArray).sortedArray(using: [sortDescriptor])
-      print("speakersSortedByDate: \(speakersSortedByDate)")
+      // this isn't quite working...need to figure out cast type
+//      if let stats = speakers as? [Speaker] {
+//        stats.forEach { stat in
+//          print(stat.speaker)
+//          print(stat.date)
+//        }
+//      }
     } catch let error as NSError {
       print("Could not fetch. \(error) \(error.userInfo)")
     }

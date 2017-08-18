@@ -19,7 +19,12 @@ class SpeakerStats {
   private var _likeCount: String!
   private var _youKnowCount: String!
   private var _otherCount: String!
-
+  private var _date: Date!
+  
+  var date: Date {
+    return _date
+  }
+  
   var speaker: String {
     return _speaker
   }
