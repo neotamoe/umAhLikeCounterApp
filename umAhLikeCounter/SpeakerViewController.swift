@@ -112,9 +112,9 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomSpeakerTableViewCell
     let speaker = speakers[indexPath.row]
     if(indexPath.row % 2 == 0){
-      cell.backgroundColor = UIColor.red
-    } else {
       cell.backgroundColor = UIColor.white
+    } else {
+      cell.backgroundColor = UIColor.lightGray
     }
     cell.nameLabel.text = speaker.value(forKeyPath: "name") as? String
     cell.umLabel.text = "Um: \(String(describing: speaker.value(forKeyPath: "um") as! String))"
