@@ -49,6 +49,7 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
       tableView.rowHeight = 150
       getCurrentDateString()
       checkDate()
+    
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -101,21 +102,36 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
     header.textLabel!.textColor = UIColor.purple
     header.contentView.backgroundColor = UIColor.lightGray
   }
-
   
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return speakers.count
   }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    print ("You tapped cell number \(indexPath.row)")
+  }
 
+  // this method handles row deletion
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+
+    if editingStyle == .delete {
+      // remove the item from the data model
+      speakers.remove(at: indexPath.row)
+      // delete the table view row
+      tableView.deleteRows(at: [indexPath], with: .fade)
+    }
+    
+  }
+  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+    
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomSpeakerTableViewCell
     let speaker = speakers[indexPath.row]
-    if(indexPath.row % 2 == 0){
-      cell.backgroundColor = UIColor.white
-    } else {
-      cell.backgroundColor = UIColor.lightGray
-    }
+//    if(indexPath.row % 2 == 0){
+//      cell.backgroundColor = UIColor.white
+//    } else {
+//      cell.backgroundColor = UIColor.lightGray
+//    }
     cell.nameLabel.text = speaker.value(forKeyPath: "name") as? String
     cell.umLabel.text = "Um: \(String(describing: speaker.value(forKeyPath: "um") as! String))"
     cell.ahLabel.text = "Ah: \(String(describing: speaker.value(forKeyPath: "ah") as! String))"
