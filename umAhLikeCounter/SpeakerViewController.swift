@@ -112,16 +112,50 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
   }
 
   // this method handles row deletion
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//    
+//    if editingStyle == .delete {
+//      // remove the item from the data model
+//      speakers.remove(at: indexPath.row)
+//      // delete the table view row
+//      tableView.deleteRows(at: [indexPath], with: .fade)
+//    }
+//
+//    
+//  }
 
+  
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    
+    let speakerEntity = "Speaker" //Entity Name
+    
+    let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    let speaker = speakers[indexPath.row]
+    
     if editingStyle == .delete {
-      // remove the item from the data model
-      speakers.remove(at: indexPath.row)
-      // delete the table view row
-      tableView.deleteRows(at: [indexPath], with: .fade)
+      managedContext.delete(speaker)
+      
+      do {
+        try managedContext.save()
+      } catch let error as NSError {
+        print("Error While Deleting Note: \(error.userInfo)")
+      }
+      
     }
     
+    //Code to Fetch New Data From The DB and Reload Table.
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: speakerEntity)
+    
+    do {
+      speakers = try managedContext.fetch(fetchRequest) as! [SpeakerMO]
+    } catch let error as NSError {
+      print("Error While Fetching Data From DB: \(error.userInfo)")
+    }
+    tableView.reloadData()
   }
+  
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
