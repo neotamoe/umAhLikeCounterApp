@@ -111,21 +111,7 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
     print ("You tapped cell number \(indexPath.row)")
   }
 
-  // this method handles row deletion
-//  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//    
-//    if editingStyle == .delete {
-//      // remove the item from the data model
-//      speakers.remove(at: indexPath.row)
-//      // delete the table view row
-//      tableView.deleteRows(at: [indexPath], with: .fade)
-//    }
-//
-//    
-//  }
 
-  
-  
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     
     let speakerEntity = "Speaker" //Entity Name
