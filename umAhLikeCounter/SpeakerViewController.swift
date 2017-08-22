@@ -27,20 +27,20 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
     return stringDate
   }
   
-  func checkDate() -> Array<String>{
-    if (sectionDates.count == 0) {
-      sectionDates.append(stringDate)
-      print("stringDate: \(stringDate)")
-      print("sectionDates.count: \(sectionDates.count)")
-      return sectionDates
-    } else if (sectionDates.count > 0 && sectionDates[sectionDates.count-1] != stringDate) {
-      sectionDates.append(stringDate)
-      print("stringDate: \(stringDate)")
-      print("sectionDates.count: \(sectionDates.count)")
-      return sectionDates
-    }
-    return sectionDates
-  }
+//  func checkDate() -> Array<String>{
+//    if (sectionDates.count == 0) {
+//      sectionDates.append(stringDate)
+//      print("stringDate: \(stringDate)")
+//      print("sectionDates.count: \(sectionDates.count)")
+//      return sectionDates
+//    } else if (sectionDates.count > 0 && sectionDates[sectionDates.count-1] != stringDate) {
+//      sectionDates.append(stringDate)
+//      print("stringDate: \(stringDate)")
+//      print("sectionDates.count: \(sectionDates.count)")
+//      return sectionDates
+//    }
+//    return sectionDates
+//  }
   
   
   override func viewDidLoad() {
@@ -48,7 +48,7 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
       print("speakers on viewDidLoad in SVC: \(speakers)")
       tableView.rowHeight = 150
       getCurrentDateString()
-      checkDate()
+//      checkDate()
     
   }
   
@@ -64,12 +64,23 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
     do {
       speakers = try managedContext.fetch(fetchRequest)
       // this isn't quite working...need to figure out cast type
-//      if let stats = speakers as? [Speaker] {
-//        stats.forEach { stat in
-//          print(stat.speaker)
-//          print(stat.date)
-//        }
-//      }
+      if let stats = speakers as? [SpeakerMO] {
+        stats.forEach { stat in
+          print(stat.name as Any)
+          print(stat.date as Any)
+          let formatter = DateFormatter()
+          formatter.dateFormat = "MM-dd-yyyy"
+          formatter.timeZone = TimeZone.current
+          let stringDate: String = formatter.string(from: stat.date as! Date)
+          if (sectionDates.count == 0) {
+            sectionDates.append(stringDate)
+            print("sectionDates: \(sectionDates)")
+          } else if (sectionDates.count > 0 && sectionDates[sectionDates.count-1] != stringDate) {
+            sectionDates.append(stringDate)
+            print("sectionDates: \(sectionDates)")
+          }
+        }
+      }
     } catch let error as NSError {
       print("Could not fetch. \(error) \(error.userInfo)")
     }
@@ -94,7 +105,7 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
   }
 
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    return "Speakers for <insert date here>"
+    return "Speakers for \(sectionDates[section])"
   }
   
   func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -147,11 +158,6 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomSpeakerTableViewCell
     let speaker = speakers[indexPath.row]
-//    if(indexPath.row % 2 == 0){
-//      cell.backgroundColor = UIColor.white
-//    } else {
-//      cell.backgroundColor = UIColor.lightGray
-//    }
     cell.nameLabel.text = speaker.value(forKeyPath: "name") as? String
     cell.umLabel.text = "Um: \(String(describing: speaker.value(forKeyPath: "um") as! String))"
     cell.ahLabel.text = "Ah: \(String(describing: speaker.value(forKeyPath: "ah") as! String))"
