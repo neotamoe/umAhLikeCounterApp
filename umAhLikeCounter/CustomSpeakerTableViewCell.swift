@@ -19,6 +19,7 @@ class CustomSpeakerTableViewCell: UITableViewCell {
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var youKnowLabel: UILabel!
     @IBOutlet weak var otherLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

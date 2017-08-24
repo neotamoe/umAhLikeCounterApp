@@ -27,30 +27,13 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
     return stringDate
   }
   
-//  func checkDate() -> Array<String>{
-//    if (sectionDates.count == 0) {
-//      sectionDates.append(stringDate)
-//      print("stringDate: \(stringDate)")
-//      print("sectionDates.count: \(sectionDates.count)")
-//      return sectionDates
-//    } else if (sectionDates.count > 0 && sectionDates[sectionDates.count-1] != stringDate) {
-//      sectionDates.append(stringDate)
-//      print("stringDate: \(stringDate)")
-//      print("sectionDates.count: \(sectionDates.count)")
-//      return sectionDates
-//    }
-//    return sectionDates
-//  }
-  
-  
   override func viewDidLoad() {
       super.viewDidLoad()
       print("speakers on viewDidLoad in SVC: \(speakers)")
       tableView.rowHeight = 150
       getCurrentDateString()
-//      checkDate()
-    
   }
+  
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -63,24 +46,24 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true, selector: #selector(NSDate.compare(_:)))]
     do {
       speakers = try managedContext.fetch(fetchRequest)
-      // this isn't quite working...need to figure out cast type
-      if let stats = speakers as? [SpeakerMO] {
-        stats.forEach { stat in
-          print(stat.name as Any)
-          print(stat.date as Any)
-          let formatter = DateFormatter()
-          formatter.dateFormat = "MM-dd-yyyy"
-          formatter.timeZone = TimeZone.current
-          let stringDate: String = formatter.string(from: stat.date as! Date)
-          if (sectionDates.count == 0) {
-            sectionDates.append(stringDate)
-            print("sectionDates: \(sectionDates)")
-          } else if (sectionDates.count > 0 && sectionDates[sectionDates.count-1] != stringDate) {
-            sectionDates.append(stringDate)
-            print("sectionDates: \(sectionDates)")
-          }
-        }
-      }
+//      if let stats = speakers as? [SpeakerMO] {
+//        stats.forEach { stat in
+//          print(stat.name as Any)
+//          print(stat.date as Any)
+//          print(stat)
+//          let formatter = DateFormatter()
+//          formatter.dateFormat = "MM-dd-yyyy"
+//          formatter.timeZone = TimeZone.current
+//          let stringDate: String = formatter.string(from: stat.date as! Date)
+//          if (sectionDates.count == 0) {
+//            sectionDates.append(stringDate)
+//            print("sectionDates: \(sectionDates)")
+//          } else if (sectionDates.count > 0 && sectionDates[sectionDates.count-1] != stringDate) {
+//            sectionDates.append(stringDate)
+//            print("sectionDates: \(sectionDates)")
+//          }
+//        }
+//      }
     } catch let error as NSError {
       print("Could not fetch. \(error) \(error.userInfo)")
     }
@@ -94,19 +77,14 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
   }
   
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-  
-  
-   func numberOfSections(in tableView: UITableView) -> Int {
-    return sectionDates.count
+  func numberOfSections(in tableView: UITableView) -> Int {
+//    return sectionDates.count
+    return 1
   }
 
-  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    return "Speakers for \(sectionDates[section])"
-  }
+//  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//    return "Speakers for \(sectionDates[section])"
+//  }
   
   func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
     let header = view as! UITableViewHeaderFooterView
@@ -167,6 +145,12 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
     cell.andLabel.text = "Like: \(String(describing: speaker.value(forKeyPath: "like") as! String))"
     cell.youKnowLabel.text = "You Know: \(String(describing: speaker.value(forKeyPath: "youKnow") as! String))"
     cell.otherLabel.text = "Other: \(String(describing: speaker.value(forKeyPath: "other") as! String))"
+    
+    let formatter = DateFormatter()
+    formatter.dateFormat = "MM-dd-yyyy"
+    formatter.timeZone = TimeZone.current
+    let stringDate: String = formatter.string(from: speaker.value(forKeyPath: "date") as! Date)
+    cell.dateLabel.text = "\(stringDate)"
     return cell
   }
 
