@@ -90,6 +90,10 @@ class ViewController: UIViewController {
     guard let newSpeaker = nameTextField.text else {
       return
     }
+//    guard let newSpeaker = nameTextField.text, !newSpeaker.isEmpty else {
+//      print("enter speaker name")
+//      return
+//    }
     let um = umLabel.text
     let ah = ahLabel.text
     let but = butLabel.text

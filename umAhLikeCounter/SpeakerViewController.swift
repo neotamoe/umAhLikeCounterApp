@@ -19,20 +19,10 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
   let tableView = UITableView()
   var stringDate = String()
   
-  func getCurrentDateString() -> String {
-    let date = Date()
-    let formatter = DateFormatter()
-    formatter.dateFormat = "MM-dd-yyyy"
-    formatter.timeZone = TimeZone.current
-    let stringDate: String = formatter.string(from: date)
-    return stringDate
-  }
   
   override func viewDidLoad() {
       super.viewDidLoad()
-      print("speakers on viewDidLoad in SVC: \(speakers)")
       tableView.rowHeight = 150
-      getCurrentDateString()
       view.backgroundColor = UIColor(red: 0.604, green: 0.984, blue: 1, alpha: 1) // #9afbff
       self.addSpeakerBtn.backgroundColor = UIColor(red: 0.204, green: 0.486, blue: 0.498, alpha: 1) // #347c7f
   }
@@ -68,11 +58,11 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
     return 1
   }
   
-  func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-    let header = view as! UITableViewHeaderFooterView
-    header.textLabel!.textColor = UIColor.purple
-    header.contentView.backgroundColor = UIColor.lightGray
-  }
+//  func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+//    let header = view as! UITableViewHeaderFooterView
+//    header.textLabel!.textColor = UIColor.purple
+//    header.contentView.backgroundColor = UIColor.lightGray
+//  }
   
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return speakers.count
