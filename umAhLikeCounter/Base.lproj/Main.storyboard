@@ -151,7 +151,6 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N38-2A-Brp">
                                 <rect key="frame" x="140" y="583" width="95" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Save">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -386,7 +385,6 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYX-C3-p1p">
                                 <rect key="frame" x="16" y="20" width="115" height="30"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="115" id="bci-ua-PZQ"/>
                                     <constraint firstAttribute="height" constant="30" id="gio-wI-LPq"/>
@@ -411,6 +409,9 @@
                             <constraint firstAttribute="trailing" secondItem="aim-Uq-IKs" secondAttribute="trailing" id="heR-3e-a8l"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addSpeakerBtn" destination="YYX-C3-p1p" id="A3H-9O-bgZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAb-Qc-l94" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -470,7 +471,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3H9-zH-O9b"/>
-        <segue reference="v9D-xm-B5U"/>
+        <segue reference="PYd-h3-GZk"/>
+        <segue reference="IAf-BL-P6d"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,6 +11,7 @@ import CoreData
 
 class SpeakerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+  @IBOutlet weak var addSpeakerBtn: UIButton!
   let speakerStats = SpeakerStats()
   var newSpeaker = [String]()
   var speakers: [NSManagedObject] = []
@@ -32,6 +33,8 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
       print("speakers on viewDidLoad in SVC: \(speakers)")
       tableView.rowHeight = 150
       getCurrentDateString()
+      view.backgroundColor = UIColor(red: 0.604, green: 0.984, blue: 1, alpha: 1) // #9afbff
+      self.addSpeakerBtn.backgroundColor = UIColor(red: 0.204, green: 0.486, blue: 0.498, alpha: 1) // #347c7f
   }
   
   
@@ -46,25 +49,9 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true, selector: #selector(NSDate.compare(_:)))]
     do {
       speakers = try managedContext.fetch(fetchRequest)
-//      if let stats = speakers as? [SpeakerMO] {
-//        stats.forEach { stat in
-//          print(stat.name as Any)
-//          print(stat.date as Any)
-//          print(stat)
-//          let formatter = DateFormatter()
-//          formatter.dateFormat = "MM-dd-yyyy"
-//          formatter.timeZone = TimeZone.current
-//          let stringDate: String = formatter.string(from: stat.date as! Date)
-//          if (sectionDates.count == 0) {
-//            sectionDates.append(stringDate)
-//            print("sectionDates: \(sectionDates)")
-//          } else if (sectionDates.count > 0 && sectionDates[sectionDates.count-1] != stringDate) {
-//            sectionDates.append(stringDate)
-//            print("sectionDates: \(sectionDates)")
-//          }
-//        }
-//      }
+      
     } catch let error as NSError {
+      
       print("Could not fetch. \(error) \(error.userInfo)")
     }
     
@@ -78,13 +65,8 @@ class SpeakerViewController: UIViewController, UITableViewDataSource, UITableVie
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
-//    return sectionDates.count
     return 1
   }
-
-//  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//    return "Speakers for \(sectionDates[section])"
-//  }
   
   func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
     let header = view as! UITableViewHeaderFooterView
