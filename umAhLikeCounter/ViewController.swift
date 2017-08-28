@@ -18,6 +18,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var nameTextField: UITextField!
   @IBOutlet weak var saveBtn: UIButton!
 
+  @IBOutlet weak var viewSpeakersBtn: UIButton!
   @IBOutlet var countLabels: [UILabel]!
   
   @IBOutlet weak var umLabel: UILabel!
@@ -45,6 +46,7 @@ class ViewController: UIViewController {
     view.backgroundColor = UIColor(red: 0.604, green: 0.984, blue: 1, alpha: 1) // #9afbff
     UIStepper.appearance().tintColor = UIColor(red: 0.204, green: 0.486, blue: 0.498, alpha: 1) // #347c7f
     self.saveBtn.backgroundColor = UIColor(red: 0.204, green: 0.486, blue: 0.498, alpha: 1) // #347c7f
+    self.viewSpeakersBtn.backgroundColor = UIColor(red: 0.204, green: 0.486, blue: 0.498, alpha: 1) // #347c7f
   }
 
   override func didReceiveMemoryWarning() {

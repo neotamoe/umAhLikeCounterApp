@@ -148,18 +148,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N38-2A-Brp">
-                                <rect key="frame" x="140" y="583" width="95" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E5R-Cb-ivE"/>
-                                    <segue destination="Kmo-Kj-DbO" kind="show" identifier="toTable" id="PYd-h3-GZk"/>
-                                </connections>
-                            </button>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xpZ-Gh-BNY">
                                 <rect key="frame" x="64" y="152" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -216,8 +204,44 @@
                                     <action selector="youKnowStepper:" destination="BYZ-38-t0r" eventType="valueChanged" id="lrG-Gv-rsK"/>
                                 </connections>
                             </stepper>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="OVR-IO-fEh">
+                                <rect key="frame" x="41" y="607" width="293" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytj-oA-Gks">
+                                        <rect key="frame" x="0.0" y="0.0" width="193" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="JII-3q-wut"/>
+                                            <constraint firstAttribute="width" constant="100" id="iAu-as-uwk"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="View Speakers">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N38-2A-Brp">
+                                        <rect key="frame" x="223" y="0.0" width="70" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="73n-Jz-t3k"/>
+                                            <constraint firstAttribute="width" constant="70" id="Zh9-41-Bd5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E5R-Cb-ivE"/>
+                                            <segue destination="Kmo-Kj-DbO" kind="show" identifier="toTable" id="PYd-h3-GZk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OVR-IO-fEh" secondAttribute="bottom" constant="30" id="7EP-71-qMx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OVR-IO-fEh" secondAttribute="trailing" constant="25" id="Owy-vP-kep"/>
+                            <constraint firstItem="OVR-IO-fEh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="25" id="fGO-ax-ttw"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="ahLabel" destination="2z4-vg-pnS" id="SFo-Tj-AVX"/>
@@ -229,6 +253,7 @@
                         <outlet property="saveBtn" destination="N38-2A-Brp" id="5Jm-bu-EjX"/>
                         <outlet property="soLabel" destination="uxJ-DF-Xvj" id="gmD-gz-Ama"/>
                         <outlet property="umLabel" destination="F0D-zs-csD" id="GEF-jA-TQe"/>
+                        <outlet property="viewSpeakersBtn" destination="ytj-oA-Gks" id="FUf-q6-jNO"/>
                         <outlet property="youKnowLabel" destination="zCv-aL-nYy" id="AjQ-ox-xEm"/>
                         <outletCollection property="countLabels" destination="F0D-zs-csD" collectionClass="NSMutableArray" id="orN-Vc-Myu"/>
                         <outletCollection property="countLabels" destination="2z4-vg-pnS" collectionClass="NSMutableArray" id="4Ty-sU-xVf"/>
@@ -482,7 +507,7 @@
                                     <segue destination="Kmo-Kj-DbO" kind="show" id="v9D-xm-B5U"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="umfinalicon512.png" translatesAutoresizingMaskIntoConstraints="NO" id="7pe-ZM-V8c">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="umfinalicon512" translatesAutoresizingMaskIntoConstraints="NO" id="7pe-ZM-V8c">
                                 <rect key="frame" x="67" y="299" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -499,10 +524,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="umfinalicon512.png" width="512" height="512"/>
+        <image name="umfinalicon512" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="v9D-xm-B5U"/>
-        <segue reference="3H9-zH-O9b"/>
+        <segue reference="PYd-h3-GZk"/>
+        <segue reference="IAf-BL-P6d"/>
     </inferredMetricsTieBreakers>
 </document>
